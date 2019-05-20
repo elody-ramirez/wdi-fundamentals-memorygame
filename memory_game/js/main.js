@@ -25,6 +25,7 @@ var wins = 0;
 var losses = 0;
 var randnum = [0, 1, 2, 3]; 
 
+//Fisher-Yates Shuffle
 function shuffle(array) {
 	for (var x = array.length - 1; x > 0; x-- ){
 		var y = Math.floor(Math.random() * (x + 1));
@@ -32,6 +33,7 @@ function shuffle(array) {
 	}
 }
 
+//checks if the two cards match but its value and nothing else
 function checkForMatch() {
 	if (cardsInPlay[0] === cardsInPlay[1]) {
 		wins ++;
@@ -43,6 +45,7 @@ function checkForMatch() {
 	}
 }
 
+//flips the card that was clicked on
 function flipCard() {
 	var cardId = this.getAttribute('data-id');
 	console.log("User flipped " + cards[cardId].rank + " of " + cards[cardId].suit);
@@ -54,6 +57,7 @@ function flipCard() {
 	}
 }
 
+//creates a random order of the 4 cards every time the page is loaded
 function createBoard() {
 	shuffle(randnum);
 	for (var i = 0; i < cards.length; i++) {
@@ -66,6 +70,7 @@ function createBoard() {
 	}
 }
 
+//flips cards back but does not rearrange them
 function resetBoard() {
 	for (var i = 0; i < cards.length; i++) {
 		var elements = document.getElementById('game-board').childNodes;
